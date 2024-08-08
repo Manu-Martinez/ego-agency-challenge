@@ -1,0 +1,37 @@
+---
+import Navbar from '../components/Navbar.astro';
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modelos - Concesionaria</title>
+</head>
+<body>
+  <Navbar />
+
+  <!-- Contenido de la página de modelos -->
+  <main>
+    <h1 class="title">Descubrí todos los modelos</h1>
+    <!-- Aquí puedes añadir más contenido específico para la página de modelos -->
+  </main>
+
+  <script type="text/javascript">
+    function toggleMenu() {
+      const menu = document.getElementById('dropdown-menu');
+      menu.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>
+
+
+<style>
+.title {
+	font-family: 'Montserrat-Bold';
+	font-size: 40px;
+}
+</style>
