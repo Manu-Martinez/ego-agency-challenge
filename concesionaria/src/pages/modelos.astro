@@ -1,6 +1,7 @@
 ---
-import Navbar from '../components/Navbar.astro';
 import '../styles/global.css';
+import { fetchModels } from '../../utils/api.js';
+import VehicleCard from '../components/VehicleCard.astro';
 ---
 
 <!DOCTYPE html>
@@ -11,28 +12,123 @@ import '../styles/global.css';
   <title>Modelos - Concesionaria</title>
 </head>
 <body>
-  <Navbar />
 
-  <!-- Contenido de la página de modelos -->
+
   <main>
     <h1 class="title">Descubrí todos los modelos</h1>
-    <!-- Aquí puedes añadir más contenido específico para la página de modelos -->
+
+	<div class="filter-container">
+		<h3 class="filter">Filtrar por </h3>
+		<div onclick="filterModels('Todos')">Todos</div>
+		<div onclick="filterModels('Autos')">Autos</div>
+		<div onclick="filterModels('Pickups y Comerciales')">Pickups y Comerciales</div>
+		<div onclick="filterModels('SUVs y Crossovers')">SUVs y Crossovers</div>
+
+		<div class="sort-container">
+			<label for="sort-by">Ordenar Por:</label>
+			<select id="sort-by" onchange="sortModels()">
+			  <option value="price-asc">De menor a mayor precio</option>
+			  <option value="price-desc">De mayor a menor precio</option>
+			  <option value="year-desc">Más nuevos primero</option>
+			  <option value="year-asc">Más viejos primero</option>
+			</select>
+		  </div>
+    </div>
+
+  
+	<VehicleCard />
   </main>
 
-  <script type="text/javascript">
-    function toggleMenu() {
-      const menu = document.getElementById('dropdown-menu');
-      menu.classList.toggle('show');
+  
+  <script type="module">
+
+
+let models = [];
+
+async function fetchAndDisplayModels() {
+  try {
+    models = await fetchModels();
+  } catch (error) {
+    console.error('Error fetching and displaying models:', error);
+  }
+}
+fetchAndDisplayModels();
+
+
+    function filterModels(segment) {
+      const filteredModels = segment === 'Todos' ? vehicles : vehicles.filter(model => model.segment === segment);
+      displayModels(filteredModels);
     }
+
+    function sortModels() {
+      const sortByElement = document.getElementById('sort-by');
+      const sortBy = sortByElement.value;
+
+      let sortedModels = [...models];
+      switch (sortBy) {
+        case 'price-asc':
+          sortedModels.sort((a, b) => a.price - b.price);
+          break;
+        case 'price-desc':
+          sortedModels.sort((a, b) => b.price - a.price);
+          break;
+        case 'year-asc':
+          sortedModels.sort((a, b) => a.year - b.year);
+          break;
+        case 'year-desc':
+          sortedModels.sort((a, b) => b.year - a.year);
+          break;
+      }
+      displayModels(sortedModels);
+    }
+
+    window.onload = fetchAndDisplayModels; 
   </script>
 </body>
 </html>
 
 
 <style>
-.title {
-	font-family: 'Montserrat-Bold';
-	font-size: 40px;
-	
+	.body {
+		width: 100%;
+	}
+    .title {
+      margin-top: 100px;
+      font-family: 'Montserrat-Bold';
+      font-size: 40px;
+      margin-left: 165px;
+    }
+
+    .filter-container, .sort-container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin: 20px 115px;
+	  flex-wrap: nowrap;
+    }
+
+    .filter-container {
+		width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 20px 115px;
+  flex-wrap: nowrap; /* Asegura que los elementos se mantengan en una sola línea */
 }
-</style>
+
+.filter-container div, .sort-container select {
+  margin-right: 47px;
+  padding: 10px 20px;
+  border: 1px solid #F7F7F7;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Montserrat-Regular';
+  white-space: nowrap; /* Evita el salto de línea dentro del div */
+}
+
+
+	
+    .sort-container select {
+      border-radius: 5px;
+    }
+  </style>
