@@ -28,8 +28,18 @@ import '../styles/global.css';
 				<a href="/option2">Servicios y accesorios</a>
 				<a href="/option1">Financiación</a>
 				<a href="/option2">Reviews y Comunidad</a>
-				<a href="/option1">Opción 1</a>
-				<a href="/option2">Opción 2</a>
+				<a href="/option1">Toyota Mobility Service</a>
+				<a href="/option2">Toyota Gazoo Racing</a>
+				<a href="/option2">Toyota Híbridos</a>
+				<a href="/option2">Consecionarios</a>
+				<a href="/option2">Test Drive</a>
+				<a href="/option2">Contacto</a>
+				<a href="/option2">Actividades</a>
+				<a href="/option2">Servicio al Cliente</a>
+				<a href="/option2">Ventas Especiales</a>
+				<a href="/option2">Innovación</a>
+				<a href="/option2">Prensa</a>
+				<a href="/option2">Acerca De...</a>
 			</li>
 		</ul>
 	   </div>
@@ -49,7 +59,7 @@ import '../styles/global.css';
 	  align-items: center;
 	  width: 1500px;
       height: 70px;
-      gap: 110px;
+      gap: 60px;
       opacity: 0px;
 	  padding: 20px;
 	  background-color: #ffffff;
@@ -102,12 +112,12 @@ import '../styles/global.css';
 	  cursor: pointer;
 	  display: flex;
   align-items: center;
-  margin-left: 880px;
+  margin-left: 960px;
 	}
 	.menu-toggle span {
 	  font-size: 16px;
 	  font-weight: bold;
-	  margin-left: auto;
+	  margin-left: 10px;
 	}
 
 	.menu-icon {
@@ -175,7 +185,29 @@ import '../styles/global.css';
     font-size: 16px;
 	padding: 10px 20px;
   }
+
+  .dropdown-links a:nth-child(4)::after, /* Reviews y Comunidad */
+  .dropdown-links a:nth-child(7)::after { /* Toyota Híbridos */
+    content: "";
+    display: block;
+    width: 60%;
+    height: 1px;
+    background-color: #d3d3d3;
+    margin: 0 160px; /* Mayor separación */
+	transform: translateY(20px);
+  }
   
+  .dropdown-links a:nth-child(4), /* Reviews y Comunidad */
+.dropdown-links a:nth-child(7) { /* Toyota Híbridos */
+  margin-bottom: 20px; /* Espaciado extra después de estos enlaces */
+}
+
+.dropdown-links a:nth-child(9) {
+	margin-bottom: 10px;
+}
+.dropdown-links a:nth-child(n+10) { /* Enlace que sigue a "Contacto" */
+    background-color: #E7E7E7;
+  }
 	@media (max-width: 768px) {
 		@media (max-width: 768px) {
 
@@ -218,16 +250,17 @@ opacity: 0px;
     }
 
 	.close-button {
-		margin-right: 24px;
+		margin-right: 100px;
 	}
 
 	.dropdown-header {
-		margin-left: 290px;
+		margin-left: 250px;
 	}
 
 	.dropdown-links {
 		margin-top: 5px;
-		margin-left: 120px;
+		margin-left: 10px;
+		margin-right: 75px;
 		text-align: right;
 	}
 
@@ -244,6 +277,33 @@ opacity: 0px;
     text-decoration: none;
     font-size: 16px;
 	padding: 10px 20px;
+  }
+
+  .dropdown-links a:nth-child(4)::after, /* Reviews y Comunidad */
+  .dropdown-links a:nth-child(7)::after { /* Toyota Híbridos */
+    content: "";
+    display: block;
+    width: 80%;
+    height: 1px;
+    background-color: #d3d3d3;
+    margin: 0 30px; /* Mayor separación */
+	transform: translateY(20px);
+  }
+  
+  .dropdown-links a:nth-child(4), /* Reviews y Comunidad */
+.dropdown-links a:nth-child(7) { /* Toyota Híbridos */
+  margin-bottom: 20px; /* Espaciado extra después de estos enlaces */
+}
+
+.dropdown-links a:nth-child(9) {
+	margin-bottom: 10px;
+}
+
+.dropdown-links a:nth-child(n+10) {
+	margin-left: -40px;
+	margin-right: 75px;
+    background-color: #E7E7E7;
+	width: 100%;
   }
   
 	}
