@@ -1,15 +1,19 @@
 {
-  "name": "blog",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "astro": "^4.13.1"
-  }
+	"name": "blog",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"server": "node server.js"
+	},
+	"dependencies": {
+		"astro": "^4.13.1",
+		"cors": "^2.8.5",
+		"express": "^4.19.2",
+		"node-fetch": "^3.3.2"
+	}
 }
